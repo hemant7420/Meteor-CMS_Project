@@ -27,7 +27,7 @@ Template.main.helpers({
         var a=Session.get('templatename');
         if(!a)
         {
-            return ('temp1');            
+            return ('temp2');            
         }
 
         else
@@ -56,14 +56,15 @@ Template.adminmain.helpers({
 });
 if (Meteor.isClient) {
     Template.adminmain.events({
-        'submit form': function(event) {
+        'submit .login-form': function(event) {
             event.preventDefault();
             console.log(Meteor.users.find().count());
             var username = event.target.login_Email.value;
             var password = event.target.login_Password.value;
         	if(username==='admin' && password==='admin')
         	{
-                Session.set('templateadmin','admin1');       		
+                Session.set('templateadmin','admin1');   
+                Session.set('loggedin',1);    		
         	}
         	else
         	{
@@ -71,9 +72,19 @@ if (Meteor.isClient) {
         	}
         },
 
+        'submit .url-form': function(event) {
+            event.preventDefault();
+            console.log(Meteor.users.find().count());
+            var url_Text = event.target.urlText.value;
+            
+            Session.set('templatename',url_Text);   
+            
+        },
+        
+
         'submit .logout': function(event){
-          
             Session.set('templateadmin','admin'); 
+            Session.set('loggedin',0); 
         }
     });
 }
