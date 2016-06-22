@@ -61,7 +61,7 @@ if (Meteor.isClient) {
             console.log(Meteor.users.find().count());
             var username = event.target.login_Email.value;
             var password = event.target.login_Password.value;
-        	if(username==='admin')
+        	if(username==='admin' && password==='admin')
         	{
                 Session.set('templateadmin','admin1');       		
         	}
@@ -74,7 +74,6 @@ if (Meteor.isClient) {
         'submit .logout': function(event){
           
             Session.set('templateadmin','admin'); 
-            Meteor.flush();
         }
     });
 }
