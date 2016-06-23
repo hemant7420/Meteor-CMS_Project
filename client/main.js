@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Accounts } from 'meteor/accounts-base'
+import { Accounts } from 'meteor/accounts-base';
+
 
 import './main.html';
 
@@ -24,6 +25,7 @@ Template.admin.created = function () {
 	
 	$('head').append('<link rel="stylesheet" href="css/stylesheets/style.css"/>'); };
 
+
 Template.registerHelper('templatename',function(input){
   return Session.get("templatename");
 });
@@ -40,6 +42,10 @@ Template.main.helpers({
             return 'temp3';
         }
     }
+});
+
+Template.registerHelper('loggedin',function(input){
+  return Session.get("loggedin");
 });
 
 Template.adminmain.helpers({

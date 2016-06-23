@@ -26,3 +26,6 @@ accounts-ui
 std:accounts-ui
 session
 u2622:persistent-session
+jabbslad:basic-auth
+kit:basic-auth
+http

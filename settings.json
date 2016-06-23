@@ -1,0 +1,10 @@
+{
+  
+    "galaxy.meteor.com": {
+        "env": {
+        "ROOT_URL": "http://projecthemant.meteorapp.com/", 
+        "MONGO_URL":"mongodb://hssinghi:xii-c7420@ds019960.mlab.com:19960/projecthemant/projecthemant"
+        }
+    }
+
+}

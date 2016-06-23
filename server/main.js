@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 Meteor.startup(() => {
+// var basicAuth = new HttpBasicAuth("guest", "password");
+// basicAuth.protect(['/admin']);
   // code to run on server at startup
-UserList = new Mongo.Collection('userlist');
-UserList.insert({username: "admin", password: "admin" });
 });
