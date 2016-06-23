@@ -17,25 +17,28 @@ Template.temp1.created = function () {
 Template.temp2.created = function () { 
 	$('head').append('<link rel="stylesheet" href="css/stylesheets/style1.css"/>'); };
 
+Template.temp3.created = function () { 
+    $('head').append('<link rel="stylesheet" href="css/stylesheets/style3.css"/>'); };
+
 Template.admin.created = function () {
 	
 	$('head').append('<link rel="stylesheet" href="css/stylesheets/style.css"/>'); };
 
+Template.registerHelper('templatename',function(input){
+  return Session.get("templatename");
+});
 
 Template.main.helpers({
     'isHome': function(){
         var a=Session.get('templatename');
-        if(!a)
-        {
-            return ('temp2');            
-        }
-
-        else
+        if (Template[a]) 
         {
             return (a);            
         }
-        
-        
+        else
+        {
+            return 'temp3';
+        }
     }
 });
 
@@ -46,12 +49,10 @@ Template.adminmain.helpers({
         {
             return ('admin');            
         }
-
         else
         {
             return (a);            
         }
-        
     }
 });
 if (Meteor.isClient) {
@@ -79,7 +80,6 @@ if (Meteor.isClient) {
             
         },
         
-
         'submit .logout': function(event){
     
             Session.setPersistent({loggedin: 0, templateadmin: "admin"});
