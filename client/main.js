@@ -63,12 +63,11 @@ if (Meteor.isClient) {
             var password = event.target.login_Password.value;
         	if(username==='admin' && password==='admin')
         	{
-                Session.set('templateadmin','admin1');   
-                Session.set('loggedin',1);    		
+                Session.setPersistent({loggedin: 1, templateadmin: "admin1"});  		
         	}
         	else
         	{
-        		Session.set('templateadmin','admin');  
+                Session.setPersistent({templateadmin: "admin"});  
         	}
         },
 
@@ -76,15 +75,14 @@ if (Meteor.isClient) {
             event.preventDefault();
             console.log(Meteor.users.find().count());
             var url_Text = event.target.urlText.value;
-            
-            Session.set('templatename',url_Text);   
+            Session.setPersistent('templatename',url_Text);
             
         },
         
 
         'submit .logout': function(event){
-            Session.set('templateadmin','admin'); 
-            Session.set('loggedin',0); 
+    
+            Session.setPersistent({loggedin: 0, templateadmin: "admin"});
         }
     });
 }

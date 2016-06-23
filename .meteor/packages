@@ -25,3 +25,4 @@ accounts-base
 accounts-ui
 std:accounts-ui
 session
+u2622:persistent-session
